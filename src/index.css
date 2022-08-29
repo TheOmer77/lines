@@ -31,7 +31,7 @@ input {
 
 input:focus {
   outline: none;
-  background-color: rgba(33, 53, 71, 0.25);
+  background-color: rgba(33, 53, 71, 0.3);
 }
 
 .user-select-none {
@@ -66,7 +66,7 @@ input:focus {
 
 .points-display {
   right: 0;
-  width: 256px;
+  width: 320px;
   height: 100vh;
   padding: 1rem;
   box-sizing: border-box;
@@ -97,6 +97,12 @@ input:focus {
   width: calc(100% - 1rem);
 }
 
+@media (hover: hover) {
+  input:hover:not(:focus) {
+    background-color: rgba(33, 53, 71, 0.225);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color: rgba(255, 255, 255, 0.87);
@@ -108,10 +114,16 @@ input:focus {
   }
 
   input:focus {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.3);
   }
 
   .text-secondary {
     color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@media (hover: hover) and (prefers-color-scheme: dark) {
+  input:hover:not(:focus) {
+    background-color: rgba(255, 255, 255, 0.225);
   }
 }
