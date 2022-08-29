@@ -1,0 +1,44 @@
+:root {
+  font-family: 'InterVariable', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #213547;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.drawCanvas,
+.points {
+  position: fixed;
+  top: 0;
+}
+
+.drawCanvas {
+  left: 0;
+}
+
+.points {
+  right: 0;
+  width: 256px;
+  height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  }
+}
