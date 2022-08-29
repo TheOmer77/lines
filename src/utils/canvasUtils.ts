@@ -32,7 +32,13 @@ export const drawPoint = (
     fillStyle = 'blue',
     strokeStyle = 'transparent',
     lineWidth = 0,
-  }: { fillStyle?: string; strokeStyle?: string; lineWidth?: number } = {}
+    radius = 8,
+  }: {
+    fillStyle?: string;
+    strokeStyle?: string;
+    lineWidth?: number;
+    radius?: number;
+  } = {}
 ) => {
   const ctx = canvas.getContext?.('2d');
   if (!canvas.getContext || !ctx) return;
@@ -44,7 +50,7 @@ export const drawPoint = (
 
   // Draw circle
   ctx.beginPath();
-  ctx.arc(point[0], point[1], 8, 0, 2 * Math.PI);
+  ctx.arc(point[0], point[1], radius, 0, 2 * Math.PI);
   ctx.fill();
   strokeStyle && lineWidth && ctx.stroke();
 };

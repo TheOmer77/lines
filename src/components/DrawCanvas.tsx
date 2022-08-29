@@ -6,7 +6,7 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { colors, lineWidth, spacing } from '../constants/defaults';
+import { colors, lineWidth, radius, spacing } from '../constants/defaults';
 import useWindowSize from '../hooks/useWindowSize';
 import { drawLine, drawPoint } from '../utils/canvasUtils';
 import getPointsForLine from '../utils/getPointsForLine';
@@ -67,7 +67,7 @@ const DrawCanvas = ({
         [clientX, clientY],
         spacing
       ).forEach(point =>
-        drawPoint(drawCanvas, point, { fillStyle: colors.tempPoint })
+        drawPoint(drawCanvas, point, { fillStyle: colors.tempPoint, radius })
       );
     },
     [drawing, height, points, width]

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { colors, lineWidth, spacing } from '../constants/defaults';
+import { colors, lineWidth, radius, spacing } from '../constants/defaults';
 import useWindowSize from '../hooks/useWindowSize';
 import { drawLine, drawPoint } from '../utils/canvasUtils';
 import getPointsForLine from '../utils/getPointsForLine';
@@ -22,7 +22,8 @@ const LineCanvas = ({ points }: { points: Line }) => {
     const canvas = ref.current;
     if (!canvas) return;
 
-    if (points.length === 1) return drawPoint(canvas, points[0]);
+    if (points.length === 1)
+      return drawPoint(canvas, points[0], { fillStyle: colors.point, radius });
 
     // Draw lines first
     points
@@ -40,7 +41,7 @@ const LineCanvas = ({ points }: { points: Line }) => {
         ([p1, p2]) =>
           p2 &&
           getPointsForLine(p1, p2, spacing).forEach(point =>
-            drawPoint(canvas, point, { fillStyle: colors.point })
+            drawPoint(canvas, point, { fillStyle: colors.point, radius })
           )
       );
 

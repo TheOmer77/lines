@@ -1,5 +1,7 @@
 export const spacing = 40;
 
+export const radius = 8;
+
 export const lineWidth = 4;
 
 export const colors = {
