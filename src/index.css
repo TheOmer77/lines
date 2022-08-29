@@ -30,10 +30,11 @@ body {
 
 input {
   font-size: inherit;
+  font-family: inherit;
   border-radius: 0.5rem;
   border: none;
   padding: 0.5rem;
-
+  min-width: 6rem;
   background-color: var(--color-input);
 }
 
@@ -50,16 +51,34 @@ input:focus {
   color: var(--color-text--secondary);
 }
 
+.section-header,
+.section-subheader {
+  margin: 0;
+}
+
 .section-header {
   font-size: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
   font-weight: 600;
+}
+
+.section-subheader {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.section-subheader:first-of-type {
+  margin-block-start: 0;
 }
 
 .list {
   margin: 0;
   padding-inline-start: 1.5rem;
+}
+
+.labeled-input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
 }
 
 .draw-canvas,
@@ -77,11 +96,11 @@ input:focus {
   width: 320px;
   height: 100vh;
   padding: 1rem;
-  box-sizing: border-box;
   z-index: 1;
-
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 .points-display > .points {
@@ -92,6 +111,7 @@ input:focus {
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  border-radius: 0.5rem;
 }
 
 .points-display > .points > .point {
@@ -99,10 +119,6 @@ input:focus {
   grid-template-columns: repeat(2, 1fr);
   gap: 0.25rem;
   width: 100%;
-}
-
-.points-display > .points > .point > input {
-  width: calc(100% - 1rem);
 }
 
 .instructions {
