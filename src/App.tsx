@@ -11,12 +11,12 @@ import getPointsForLine from './utils/getPointsForLine';
 import { spacing, colors } from './constants/defaults';
 
 import type { Line } from './types';
+import LineCanvas from './components/LineCanvas';
 
 const App = () => {
   const { width, height } = useWindowSize();
 
-  const canvasRef = useRef<HTMLCanvasElement>(null),
-    drawCanvasRef = useRef<HTMLCanvasElement>(null);
+  const drawCanvasRef = useRef<HTMLCanvasElement>(null);
 
   const [points, setPoints] = useState<Line>([]);
   const [drawing, setDrawing] = useState(false);
@@ -68,45 +68,9 @@ const App = () => {
 
   /** Set the canvas width + height to viewport width + height */
   useEffect(() => {
-    canvasRef.current?.setAttribute('width', `${width}px`);
-    canvasRef.current?.setAttribute('height', `${height}px`);
-
     drawCanvasRef.current?.setAttribute('width', `${width}px`);
     drawCanvasRef.current?.setAttribute('height', `${height}px`);
   }, [height, width]);
-
-  /** Draw the lines that the user has drawn, from points state */
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    if (points.length === 1) return drawPoint(canvas, points[0]);
-
-    // Draw lines first
-    points
-      .map((vert, index) => [vert, points[index + 1]])
-      .forEach(
-        ([p1, p2]) =>
-          p2 &&
-          drawLine(canvas, p1, p2, { strokeStyle: colors.line, lineWidth: 4 })
-      );
-
-    // Then draw points
-    points
-      .map((vert, index) => [vert, points[index + 1]])
-      .forEach(
-        ([p1, p2]) =>
-          p2 &&
-          getPointsForLine(p1, p2, spacing).forEach(point =>
-            drawPoint(canvas, point, { fillStyle: colors.point })
-          )
-      );
-
-    return () => {
-      if (width && height)
-        canvas?.getContext?.('2d')?.clearRect?.(0, 0, width, height);
-    };
-  }, [height, points, width]);
 
   /** Clear the drawing canvas when you stop drawing */
   useEffect(() => {
@@ -145,7 +109,7 @@ ${points.map(([x, y]) => `  [${x}, ${y}]`).join(', \n')}
         onDoubleClick={canvasDoubleClickHandler}
         onMouseMove={canvasMouseMoveHandler}
       ></canvas>
-      <canvas ref={canvasRef}></canvas>
+      <LineCanvas points={points} />
     </>
   );
 };
