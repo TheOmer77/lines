@@ -27,7 +27,7 @@ const Controls = ({
   );
 
   return (
-    <div className='points-display'>
+    <div className='controls-panel'>
       {/* Points */}
       <h2 className='section-header user-select-none'>Points</h2>
       <div className='points'>
