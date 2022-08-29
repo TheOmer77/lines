@@ -34,6 +34,10 @@ input:focus {
   background-color: rgba(33, 53, 71, 0.25);
 }
 
+.user-select-none {
+  user-select: none;
+}
+
 .text-secondary {
   color: rgba(33, 53, 71, 0.65);
 }
@@ -43,6 +47,11 @@ input:focus {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 600;
+}
+
+.list {
+  margin: 0;
+  padding-inline-start: 1.5rem;
 }
 
 .draw-canvas,

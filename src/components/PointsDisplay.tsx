@@ -24,12 +24,10 @@ const PointsDisplay = ({
 
   return (
     <div className='points-display'>
-      <h2 className='section-header'>Points</h2>
-      {!points.length ? (
-        <span className='text-secondary'>Click anywhere to add a point.</span>
-      ) : (
-        <div className='points'>
-          {points.map((point, index) => (
+      <h2 className='section-header user-select-none'>Points</h2>
+      <div className='points'>
+        {points.length ? (
+          points.map((point, index) => (
             <div key={index} className='point'>
               <input
                 type='number'
@@ -46,9 +44,20 @@ const PointsDisplay = ({
                 }
               ></input>
             </div>
-          ))}
-        </div>
-      )}
+          ))
+        ) : (
+          <span className='text-secondary user-select-none'>
+            No points added yet.
+          </span>
+        )}
+      </div>
+
+      <h2 className='section-header user-select-none'>Instructions</h2>
+      <ul className='text-secondary list user-select-none'>
+        <li>Click anywhere to add a point.</li>
+        <li>Double click or press Esc to stop drawing.</li>
+        <li>Press Esc a second time to clear the screen.</li>
+      </ul>
     </div>
   );
 
