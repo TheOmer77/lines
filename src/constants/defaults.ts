@@ -10,6 +10,8 @@ export const testPolygon: Line = [
 
 export const spacing = 40;
 
+export const lineWidth = 4;
+
 export const colors = {
   line: '#a3adff',
   point: '#2954ff',

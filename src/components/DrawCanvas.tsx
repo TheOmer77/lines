@@ -6,7 +6,7 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { colors, spacing } from '../constants/defaults';
+import { colors, lineWidth, spacing } from '../constants/defaults';
 import useWindowSize from '../hooks/useWindowSize';
 import { drawLine, drawPoint } from '../utils/canvasUtils';
 import getPointsForLine from '../utils/getPointsForLine';
@@ -60,6 +60,7 @@ const DrawCanvas = ({
 
       drawLine(drawCanvas, points[points.length - 1], [clientX, clientY], {
         strokeStyle: colors.tempLine,
+        lineWidth,
       });
       getPointsForLine(
         points[points.length - 1],
