@@ -20,8 +20,33 @@ body {
   overflow: hidden;
 }
 
+input {
+  font-size: inherit;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem;
+
+  background-color: rgba(33, 53, 71, 0.15);
+}
+
+input:focus {
+  outline: none;
+  background-color: rgba(33, 53, 71, 0.25);
+}
+
+.text-secondary {
+  color: rgba(33, 53, 71, 0.65);
+}
+
+.section-header {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
 .drawCanvas,
-.points {
+.points-display {
   position: fixed;
   top: 0;
 }
@@ -30,15 +55,48 @@ body {
   left: 0;
 }
 
-.points {
+.points-display {
   right: 0;
   width: 256px;
   height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.points-display > .points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.points-display > .points > .point {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.points-display > .points > .point > input {
+  width: calc(100% - 1rem);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
+  }
+
+  input {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  input:focus {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .text-secondary {
+    color: rgba(255, 255, 255, 0.5);
   }
 }

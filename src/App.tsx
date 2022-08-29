@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <>
-      <PointsDisplay points={points} />
+      <PointsDisplay points={points} setPoints={setPoints} />
       <DrawCanvas
         points={points}
         setPoints={setPoints}
