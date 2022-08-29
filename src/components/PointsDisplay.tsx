@@ -60,20 +60,6 @@ const PointsDisplay = ({
       </ul>
     </div>
   );
-
-  /* OLD UGLY VERSION
-  return (
-    <div className='points'>
-      <pre>
-        {points.length
-          ? `[
-${points.map(([x, y]) => `  [${x}, ${y}]`).join(', \n')}
-]`
-          : '[]'}
-      </pre>
-    </div>
-  );
-  */
 };
 
 export default PointsDisplay;
