@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useCallback } from 'react';
-import type { Line, StyleProperties } from '../types';
+import type { Line, StyleProperties } from '../../types';
 
 const Controls = ({
   points,
