@@ -95,7 +95,7 @@ const DrawCanvas = ({
   return (
     <canvas
       ref={ref}
-      className='drawCanvas'
+      className='draw-canvas'
       onClick={canvasClickHandler}
       onDoubleClick={canvasDoubleClickHandler}
       onMouseMove={canvasMouseMoveHandler}

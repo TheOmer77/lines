@@ -45,13 +45,13 @@ input:focus {
   font-weight: 600;
 }
 
-.drawCanvas,
+.draw-canvas,
 .points-display {
   position: fixed;
   top: 0;
 }
 
-.drawCanvas {
+.draw-canvas {
   left: 0;
 }
 
