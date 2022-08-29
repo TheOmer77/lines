@@ -8,7 +8,7 @@ import {
 import useWindowSize from './hooks/useWindowSize';
 import { drawLine, drawPoint } from './utils/canvasUtils';
 import getPointsForLine from './utils/getPointsForLine';
-import { spacing } from './constants/defaults';
+import { spacing, colors } from './constants/defaults';
 
 import type { Line } from './types';
 
@@ -53,14 +53,14 @@ const App = () => {
       if (!drawing || !points.length) return;
 
       drawLine(drawCanvas, points[points.length - 1], [clientX, clientY], {
-        strokeStyle: '#d1d1d1',
+        strokeStyle: colors.tempLine,
       });
       getPointsForLine(
         points[points.length - 1],
         [clientX, clientY],
         spacing
       ).forEach(point =>
-        drawPoint(drawCanvas, point, { fillStyle: '#949494' })
+        drawPoint(drawCanvas, point, { fillStyle: colors.tempPoint })
       );
     },
     [drawing, height, points, width]
@@ -88,7 +88,7 @@ const App = () => {
       .forEach(
         ([p1, p2]) =>
           p2 &&
-          drawLine(canvas, p1, p2, { strokeStyle: '#a3adff', lineWidth: 4 })
+          drawLine(canvas, p1, p2, { strokeStyle: colors.line, lineWidth: 4 })
       );
 
     // Then draw points
@@ -98,7 +98,7 @@ const App = () => {
         ([p1, p2]) =>
           p2 &&
           getPointsForLine(p1, p2, spacing).forEach(point =>
-            drawPoint(canvas, point, { fillStyle: '#2954ff' })
+            drawPoint(canvas, point, { fillStyle: colors.point })
           )
       );
 
