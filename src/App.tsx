@@ -3,6 +3,7 @@ import { useState } from 'react';
 import LineCanvas from './components/LineCanvas';
 import DrawCanvas from './components/DrawCanvas';
 import type { Line } from './types';
+import PointsDisplay from './components/PointsDisplay';
 
 const App = () => {
   const [points, setPoints] = useState<Line>([]);
@@ -10,15 +11,7 @@ const App = () => {
 
   return (
     <>
-      <div className='points'>
-        <pre>
-          {points.length
-            ? `[
-${points.map(([x, y]) => `  [${x}, ${y}]`).join(', \n')}
-]`
-            : '[]'}
-        </pre>
-      </div>
+      <PointsDisplay points={points} />
       <DrawCanvas
         points={points}
         setPoints={setPoints}
