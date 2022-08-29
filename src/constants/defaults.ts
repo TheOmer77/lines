@@ -7,6 +7,6 @@ export const lineWidth = 4;
 export const colors = {
   line: '#a3adff',
   point: '#2954ff',
-  tempLine: '#d1d1d1',
-  tempPoint: '#949494',
+  tempLine: '#a3adff80',
+  tempPoint: '#2954ff80',
 };
