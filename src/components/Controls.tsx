@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import type { Line, StyleProperties } from '../types';
 
-const PointsDisplay = ({
+const Controls = ({
   points,
   setPoints,
   style,
@@ -113,4 +113,4 @@ const PointsDisplay = ({
   );
 };
 
-export default PointsDisplay;
+export default Controls;

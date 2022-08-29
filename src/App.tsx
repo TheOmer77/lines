@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import LineCanvas from './components/LineCanvas';
 import DrawCanvas from './components/DrawCanvas';
-import PointsDisplay from './components/PointsDisplay';
+import Controls from './components/Controls';
 import Instructions from './components/Instructions';
 
 import { spacing, lineWidth, radius, colors } from './constants/defaults';
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <>
       <Instructions />
-      <PointsDisplay
+      <Controls
         points={points}
         setPoints={setPoints}
         style={style}
