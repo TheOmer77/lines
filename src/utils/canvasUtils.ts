@@ -1,3 +1,8 @@
+import {
+  colors,
+  lineWidth as defaultLineWidth,
+  radius as defaultRadius,
+} from '../constants/defaults';
 import type { Point } from '../types';
 
 export const drawLine = (
@@ -5,16 +10,14 @@ export const drawLine = (
   point1: Point,
   point2: Point,
   {
-    fillStyle = 'transparent',
-    strokeStyle = 'red',
-    lineWidth = 5,
+    strokeStyle = colors.line,
+    lineWidth = defaultLineWidth,
   }: { fillStyle?: string; strokeStyle?: string; lineWidth?: number } = {}
 ) => {
   const ctx = canvas.getContext?.('2d');
   if (!canvas.getContext || !ctx) return;
 
   // Style properties
-  ctx.fillStyle = fillStyle;
   ctx.strokeStyle = strokeStyle;
   ctx.lineWidth = lineWidth;
 
@@ -29,10 +32,10 @@ export const drawPoint = (
   canvas: HTMLCanvasElement,
   point: Point,
   {
-    fillStyle = 'blue',
+    fillStyle = colors.point,
     strokeStyle = 'transparent',
     lineWidth = 0,
-    radius = 8,
+    radius = defaultRadius,
   }: {
     fillStyle?: string;
     strokeStyle?: string;
