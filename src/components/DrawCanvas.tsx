@@ -6,22 +6,23 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { colors, lineWidth, radius, spacing } from '../constants/defaults';
 import useWindowSize from '../hooks/useWindowSize';
 import { drawLine, drawPoint } from '../utils/canvasUtils';
 import getPointsForLine from '../utils/getPointsForLine';
-import type { Line } from '../types';
+import type { Line, StyleProperties } from '../types';
 
 const DrawCanvas = ({
   points,
   setPoints,
   drawing,
   setDrawing,
+  style,
 }: {
   points: Line;
   setPoints: Dispatch<SetStateAction<Line>>;
   drawing: boolean;
   setDrawing: Dispatch<SetStateAction<boolean>>;
+  style: StyleProperties;
 }) => {
   const { width, height } = useWindowSize();
 
@@ -59,18 +60,31 @@ const DrawCanvas = ({
       if (!drawing || !points.length) return;
 
       drawLine(drawCanvas, points[points.length - 1], [clientX, clientY], {
-        strokeStyle: colors.tempLine,
-        lineWidth,
+        strokeStyle: style.colors.tempLine,
+        lineWidth: style.lineWidth,
       });
       getPointsForLine(
         points[points.length - 1],
         [clientX, clientY],
-        spacing
+        style.spacing
       ).forEach(point =>
-        drawPoint(drawCanvas, point, { fillStyle: colors.tempPoint, radius })
+        drawPoint(drawCanvas, point, {
+          fillStyle: style.colors.tempPoint,
+          radius: style.radius,
+        })
       );
     },
-    [drawing, height, points, width]
+    [
+      drawing,
+      height,
+      points,
+      style.colors.tempLine,
+      style.colors.tempPoint,
+      style.lineWidth,
+      style.radius,
+      style.spacing,
+      width,
+    ]
   );
 
   /** Set the canvas width + height to viewport width + height */

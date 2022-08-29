@@ -1,12 +1,17 @@
 import { useEffect, useRef } from 'react';
 
-import { colors, lineWidth, radius, spacing } from '../constants/defaults';
 import useWindowSize from '../hooks/useWindowSize';
 import { drawLine, drawPoint } from '../utils/canvasUtils';
 import getPointsForLine from '../utils/getPointsForLine';
-import type { Line } from '../types';
+import type { Line, StyleProperties } from '../types';
 
-const LineCanvas = ({ points }: { points: Line }) => {
+const LineCanvas = ({
+  points,
+  style,
+}: {
+  points: Line;
+  style: StyleProperties;
+}) => {
   const { width, height } = useWindowSize();
 
   const ref = useRef<HTMLCanvasElement>(null);
@@ -23,7 +28,10 @@ const LineCanvas = ({ points }: { points: Line }) => {
     if (!canvas) return;
 
     if (points.length === 1)
-      return drawPoint(canvas, points[0], { fillStyle: colors.point, radius });
+      return drawPoint(canvas, points[0], {
+        fillStyle: style.colors.point,
+        radius: style.radius,
+      });
 
     // Draw lines first
     points
@@ -31,7 +39,10 @@ const LineCanvas = ({ points }: { points: Line }) => {
       .forEach(
         ([p1, p2]) =>
           p2 &&
-          drawLine(canvas, p1, p2, { strokeStyle: colors.line, lineWidth })
+          drawLine(canvas, p1, p2, {
+            strokeStyle: style.colors.line,
+            lineWidth: style.lineWidth,
+          })
       );
 
     // Then draw points
@@ -40,8 +51,11 @@ const LineCanvas = ({ points }: { points: Line }) => {
       .forEach(
         ([p1, p2]) =>
           p2 &&
-          getPointsForLine(p1, p2, spacing).forEach(point =>
-            drawPoint(canvas, point, { fillStyle: colors.point, radius })
+          getPointsForLine(p1, p2, style.spacing).forEach(point =>
+            drawPoint(canvas, point, {
+              fillStyle: style.colors.point,
+              radius: style.radius,
+            })
           )
       );
 
@@ -49,7 +63,16 @@ const LineCanvas = ({ points }: { points: Line }) => {
       if (width && height)
         canvas?.getContext?.('2d')?.clearRect?.(0, 0, width, height);
     };
-  }, [height, points, width]);
+  }, [
+    height,
+    points,
+    style.colors.line,
+    style.colors.point,
+    style.lineWidth,
+    style.radius,
+    style.spacing,
+    width,
+  ]);
 
   return <canvas ref={ref} />;
 };
